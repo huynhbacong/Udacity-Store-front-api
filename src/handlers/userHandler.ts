@@ -6,14 +6,24 @@ import { createJwtToken } from "../utilities/helpers";
 const store = new UserStore();
 
 const index = async (_req: Request, res: Response): Promise<void> => {
-  const users = await store.index();
-  res.json(users);
+    try {
+        const users = await store.index();
+        res.json(users);
+    } catch (err) {
+        res.status(400);
+        res.json(err);
+    }
 };
 
 const show = async (req: Request, res: Response): Promise<void> => {
-  const id = parseInt(req.params.id);
-  const user = await store.show(id);
-  res.json(user);
+    try {
+        const id = parseInt(req.params.id);
+        const user = await store.show(id);
+        res.json(user);
+    } catch (err) {
+        res.status(400);
+        res.json(err);
+    }
 };
 
 const create = async (req: Request, res: Response): Promise<void> => {
