@@ -12,7 +12,6 @@ export class DashboardQueries {
         " GROUP BY P.ID" +
         " ORDER BY SUM(OP.PRODUCT_AMOUNT) DESC" +
         " LIMIT 5";
-      console.log("query", sql);
 
       const result = await conn.query(sql);
       conn.release();
